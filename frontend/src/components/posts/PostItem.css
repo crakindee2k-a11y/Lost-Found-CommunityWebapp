@@ -1,0 +1,348 @@
+.post-item {
+    background: #1a1a1a; /* Fallback */
+    background: linear-gradient(135deg, 
+        rgba(26, 26, 26, 0.75) 0%, 
+        rgba(18, 18, 18, 0.85) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.25rem;
+    margin-bottom: 0;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    /* Optimize rendering */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Accent border on left - CYAN/TEAL */
+.post-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #06b6d4 0%, #14b8a6 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 16px 0 0 16px;
+}
+
+/* Gradient overlay on hover - Simplified */
+.post-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.post-item:hover {
+    border-color: rgba(6, 182, 212, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    will-change: transform, box-shadow;
+}
+
+.post-item:hover::before {
+    opacity: 1;
+}
+
+.post-item:hover::after {
+    opacity: 1;
+}
+
+.post-item.lost::before {
+    background: linear-gradient(180deg, rgba(239, 68, 68, 0.8) 0%, rgba(239, 68, 68, 0.4) 100%);
+}
+
+.post-item.lost::after {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.06) 0%, transparent 100%);
+}
+
+.post-item.found::before {
+    background: linear-gradient(180deg, rgba(34, 197, 94, 0.8) 0%, rgba(34, 197, 94, 0.4) 100%);
+}
+
+.post-item.found::after {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.06) 0%, transparent 100%);
+}
+
+/* Resolved posts - Slightly muted but still visible */
+.post-item.resolved-post {
+    opacity: 0.85;
+}
+
+.post-item.resolved-post .post-title,
+.post-item.resolved-post .post-description {
+    opacity: 0.9;
+}
+
+.post-item.resolved-post:hover {
+    opacity: 1;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+    padding-right: 80px; /* Space for corner category */
+}
+
+.post-badges-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.post-type-badge {
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    backdrop-filter: blur(5px);
+}
+
+.post-type-badge.lost {
+    background: rgba(239, 68, 68, 0.15);
+    color: rgba(239, 68, 68, 1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.post-type-badge.found {
+    background: rgba(34, 197, 94, 0.15);
+    color: rgba(34, 197, 94, 1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.post-status-badge {
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    backdrop-filter: blur(5px);
+}
+
+/* RESOLVED badge */
+.post-status-badge.resolved {
+    background: rgba(6, 182, 212, 0.2);
+    color: #22d3ee;
+    border: 1px solid rgba(6, 182, 212, 0.4);
+}
+
+/* Category badge positioned at top right corner */
+.post-category-corner {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 2;
+}
+
+.post-time-ago {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+    margin-left: 0.25rem;
+}
+
+.post-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.post-description {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Post Images - Smart Grid */
+.post-images {
+    display: grid;
+    gap: 2px;
+    margin: 0 -1.25rem 1rem -1.25rem; /* Bleed to edges */
+    overflow: hidden;
+    width: calc(100% + 2.5rem);
+    background: #000; /* Dark background for images */
+    aspect-ratio: 16/9; /* FORCE UNIFORM ASPECT RATIO */
+    height: auto !important; /* Override specific height rules */
+}
+
+/* Single image */
+.post-images.count-1 {
+    grid-template-columns: 1fr;
+}
+
+/* Two images */
+.post-images.count-2 {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* Three images */
+.post-images.count-3 {
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.post-images.count-3 .post-image-thumb:first-child {
+    grid-row: span 2;
+}
+
+/* Four images */
+.post-images.count-4 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.post-image-thumb {
+    width: 100%;
+    height: 100%;
+    background-color: #121212;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Blurred background layer for 'contain' effect */
+.post-image-thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: inherit; /* Inherit from parent inline style */
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px) brightness(0.4);
+    transform: scale(1.2); /* Prevent blur edges */
+    z-index: 1;
+}
+
+/* The actual image */
+.post-image-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Show full image */
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+    backdrop-filter: none; /* Reset any backdrop filter */
+}
+
+.post-image-thumb:hover img {
+    transform: scale(1.02);
+}
+
+.more-images-overlay {
+    position: absolute;
+    inset: 0; /* Fill the parent thumbnail */
+    background: rgba(0, 0, 0, 0.7); /* Slightly darker for better contrast */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem; /* Larger text */
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+    z-index: 10;
+    transition: background 0.3s ease;
+}
+
+.post-image-thumb:hover .more-images-overlay {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+}
+
+.post-location {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.post-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.post-author {
+    color: #06b6d4;
+    font-weight: 600;
+}
+
+.post-tags {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s;
+}
+
+.tag:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #06b6d4;
+}
+
+@media (max-width: 768px) {
+    .post-item {
+        padding: 1rem;
+    }
+    
+    .post-images {
+        margin: 0 -1rem 1rem -1rem;
+        width: calc(100% + 2rem);
+    }
+}

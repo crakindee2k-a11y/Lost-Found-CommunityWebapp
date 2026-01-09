@@ -1,0 +1,123 @@
+/* Verification Banner */
+.verification-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border: 1px solid;
+}
+
+.verification-banner.unverified {
+    background: rgba(6, 182, 212, 0.08);
+    border-color: rgba(6, 182, 212, 0.2);
+}
+
+.verification-banner.pending {
+    background: rgba(245, 158, 11, 0.08);
+    border-color: rgba(245, 158, 11, 0.2);
+}
+
+.verification-banner.rejected {
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.banner-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.banner-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.verification-banner.unverified .banner-icon {
+    background: rgba(6, 182, 212, 0.15);
+    color: #06b6d4;
+}
+
+.verification-banner.pending .banner-icon {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.verification-banner.rejected .banner-icon {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.banner-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.banner-content h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.25rem;
+}
+
+.banner-content p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.4;
+}
+
+.banner-action-wrapper {
+    flex-shrink: 0;
+}
+
+.banner-action {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.verification-banner.unverified .banner-action {
+    background: rgba(6, 182, 212, 0.15);
+    color: #06b6d4;
+}
+
+.verification-banner.unverified .banner-action:hover {
+    background: rgba(6, 182, 212, 0.25);
+}
+
+.verification-banner.rejected .banner-action {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+}
+
+.verification-banner.rejected .banner-action:hover {
+    background: rgba(239, 68, 68, 0.25);
+}
+
+@media (max-width: 640px) {
+    .verification-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .banner-action-wrapper {
+        width: 100%;
+    }
+
+    .banner-action {
+        width: 100%;
+        justify-content: center;
+    }
+}

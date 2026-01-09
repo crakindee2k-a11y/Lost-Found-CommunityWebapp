@@ -1,0 +1,221 @@
+/* ===================================
+   ACCESSIBILITY ENHANCEMENTS
+   Focus states, ARIA support, keyboard navigation
+   =================================== */
+
+/* Skip to main content link */
+.skip-to-main {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: top 0.3s ease;
+}
+
+.skip-to-main:focus {
+    top: 1rem;
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+}
+
+/* Enhanced focus states for interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid rgba(6, 182, 212, 0.8);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Focus within for containers */
+.post-item:focus-within,
+.sidebar-card:focus-within,
+.stat-card:focus-within {
+    box-shadow: 
+        0 0 0 3px rgba(6, 182, 212, 0.4),
+        0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Remove outline for mouse users, keep for keyboard users */
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Keyboard navigation indicators */
+.nav-link:focus-visible,
+.filter-chip:focus-visible,
+.category-chip:focus-visible {
+    background: rgba(6, 182, 212, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Button focus states */
+.btn-primary:focus-visible,
+.action-btn:focus-visible,
+.register-btn:focus-visible {
+    box-shadow: 
+        0 0 0 3px rgba(255, 255, 255, 0.3),
+        0 8px 24px rgba(6, 182, 212, 0.5);
+}
+
+/* Input focus states */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    border-color: rgba(6, 182, 212, 0.6);
+    box-shadow: 
+        0 0 0 3px rgba(6, 182, 212, 0.2),
+        0 4px 12px rgba(6, 182, 212, 0.1);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .post-item,
+    .sidebar-card,
+    .stat-card {
+        border-width: 2px;
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    a:focus-visible,
+    button:focus-visible {
+        outline-width: 4px;
+        outline-color: #ffffff;
+    }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Visually hidden but still accessible */
+.visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+/* Focus trap for modals */
+.modal-open {
+    overflow: hidden;
+}
+
+/* Better link contrast */
+a {
+    color: #06b6d4;
+    text-decoration: underline;
+    text-decoration-color: rgba(6, 182, 212, 0.3);
+    text-underline-offset: 3px;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    text-decoration-color: rgba(6, 182, 212, 0.8);
+}
+
+/* Ensure sufficient color contrast for text */
+.low-contrast-warning {
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    color: #fbbf24;
+}
+
+/* Loading state ARIA live region */
+[aria-live="polite"],
+[aria-live="assertive"] {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Disabled state clarity */
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(50%);
+}
+
+button:disabled:hover,
+input:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Touch target size for mobile */
+@media (max-width: 768px) {
+    button,
+    a,
+    input[type="button"],
+    input[type="submit"],
+    input[type="checkbox"],
+    input[type="radio"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Dark mode high contrast variant */
+@media (prefers-color-scheme: dark) and (prefers-contrast: high) {
+    body {
+        background: #000000;
+        color: #ffffff;
+    }
+    
+    .post-item,
+    .sidebar-card,
+    .stat-card {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* Keyboard-only focus indicator */
+.keyboard-nav *:focus-visible {
+    outline: 3px dashed #06b6d4;
+    outline-offset: 4px;
+}
+
+

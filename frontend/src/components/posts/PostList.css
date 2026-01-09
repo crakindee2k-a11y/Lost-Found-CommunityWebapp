@@ -1,0 +1,200 @@
+.post-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+    align-content: start;
+}
+
+.error-container {
+    text-align: center;
+    padding: 3rem 2rem;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-message {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.error-message::before {
+    content: '📭';
+    font-size: 3rem;
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.3) 0%, rgba(18, 18, 18, 0.5) 100%);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+}
+
+.empty-icon {
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+    filter: drop-shadow(0 4px 12px rgba(6, 182, 212, 0.2));
+}
+
+.empty-state h3 {
+    margin-bottom: 0.875rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.empty-state p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 480px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+}
+
+/* Empty State Actions */
+.empty-state-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.empty-state-btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.empty-state-btn.primary {
+    background: linear-gradient(135deg, #e74c3c 0%, #ff6b6b 50%, #f39c12 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(231, 76, 60, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.empty-state-btn.primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.empty-state-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(231, 76, 60, 0.35);
+}
+
+.empty-state-btn.primary:hover::before {
+    opacity: 1;
+}
+
+.empty-state-btn.secondary {
+    background: rgba(26, 26, 26, 0.8);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.empty-state-btn.secondary:hover {
+    background: rgba(26, 26, 26, 1);
+    border-color: rgba(6, 182, 212, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Empty State Tips */
+.empty-state-tips {
+    background: rgba(6, 182, 212, 0.08);
+    border: 1px solid rgba(6, 182, 212, 0.15);
+    border-radius: 12px;
+    padding: 1.25rem 1.75rem;
+    max-width: 400px;
+    text-align: left;
+}
+
+.tip-header {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #06b6d4;
+    margin-bottom: 0.75rem;
+}
+
+.empty-state-tips ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.empty-state-tips li {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.empty-state-tips li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #06b6d4;
+    font-weight: 700;
+}
+
+
+@media (max-width: 768px) {
+    .post-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .empty-state {
+        padding: 3rem 1.5rem;
+        min-height: 350px;
+    }
+    
+    .empty-state-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .empty-state-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .empty-state-tips {
+        padding: 1rem 1.25rem;
+        width: 100%;
+        max-width: 100%;
+    }
+}

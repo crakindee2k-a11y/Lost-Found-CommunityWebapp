@@ -1,0 +1,352 @@
+.auth-form {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: #ffffff;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 1);
+    transition: all 0.2s ease;
+    font-weight: 400;
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 300;
+}
+
+.form-group input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.1);
+}
+
+.form-group input:disabled {
+    background: rgba(255, 255, 255, 0.01);
+    border-color: rgba(255, 255, 255, 0.03);
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+/* Fix autofill yellow background */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus,
+.form-group input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.05) inset !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, 1) !important;
+    caret-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-group input:-webkit-autofill::first-line {
+    font-size: 0.95rem;
+    font-family: inherit;
+    font-weight: 400;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: #ffffff !important;
+    color: #0a0a0a !important;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.submit-btn:active:not(:disabled) {
+    background: rgba(255, 255, 255, 0.8) !important;
+    transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+    background: rgba(255, 255, 255, 0.3) !important;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.error-text {
+    color: #f87171;
+    font-size: 0.875rem;
+    text-align: center;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    min-height: 1.4em; /* Reserve space to prevent layout shift */
+    animation: slideDown 0.25s ease;
+}
+
+.success-text {
+    color: #34d399;
+    font-size: 0.875rem;
+    text-align: center;
+    margin-top: -0.25rem;
+    margin-bottom: 1rem;
+    min-height: 1.4em;
+    animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Step Indicator */
+.step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+.step-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.step.active .step-number {
+    background: #06b6d4;
+    color: #0a0a0a;
+}
+
+.step-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.step-line {
+    width: 60px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Verification Info */
+.verification-info {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.verification-info h3 {
+    color: #ffffff;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+.verification-info p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* Document Upload Grid */
+.document-upload-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.document-upload {
+    width: 100%;
+    min-width: 0; /* Allow flex/grid item to shrink below content size */
+}
+
+.document-upload label {
+    display: block;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.upload-area {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.upload-area:hover {
+    border-color: rgba(6, 182, 212, 0.5);
+    background: rgba(6, 182, 212, 0.05);
+}
+
+.upload-area.has-image {
+    border-style: solid;
+    border-color: rgba(6, 182, 212, 0.5);
+}
+
+.upload-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.upload-placeholder svg {
+    width: 24px;
+    height: 24px;
+}
+
+.upload-placeholder span {
+    font-size: 0.7rem;
+}
+
+/* Skip Verification */
+.skip-verification {
+    margin-bottom: 1rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Form Buttons */
+.form-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.back-btn {
+    flex: 0 0 auto;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.form-buttons .submit-btn {
+    flex: 1;
+    margin-top: 0;
+}
+
+@media (max-width: 640px) {
+    .document-upload-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .upload-area {
+        aspect-ratio: 16/9;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .form-group input {
+        padding: 0.75rem 1rem;
+    }
+    
+    .submit-btn {
+        padding: 0.75rem;
+    }
+
+    .step-line {
+        width: 40px;
+    }
+}

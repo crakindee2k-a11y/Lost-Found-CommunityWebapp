@@ -1,0 +1,230 @@
+/* Map Picker Styles */
+.map-picker-container {
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    /* Ensure all child elements respect stacking context */
+    isolation: isolate;
+}
+
+.map-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.map-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(6, 182, 212, 0.15);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    border-radius: 6px;
+    color: #06b6d4;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.map-toggle-btn:hover {
+    background: rgba(6, 182, 212, 0.25);
+    border-color: rgba(6, 182, 212, 0.5);
+    transform: translateY(-2px);
+}
+
+.map-toggle-btn svg {
+    flex-shrink: 0;
+}
+
+.selected-location-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 6px;
+    color: #22c55e;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.map-picker-content {
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 1.25rem;
+    animation: slideDown 0.3s ease;
+    position: relative;
+    z-index: 1;
+    /* Prevent this from capturing external events */
+    pointer-events: auto;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Map Search Form */
+.map-search-form {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.map-search-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: rgba(18, 18, 18, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.map-search-input:focus {
+    outline: none;
+    border-color: rgba(6, 182, 212, 0.5);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+}
+
+.map-search-btn {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.4) 0%, rgba(20, 184, 166, 0.4) 100%);
+    border: 1px solid rgba(6, 182, 212, 0.4);
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.map-search-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.6) 0%, rgba(20, 184, 166, 0.6) 100%);
+    transform: translateY(-2px);
+}
+
+.map-search-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Instructions */
+.map-instructions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 0.75rem;
+    background: rgba(6, 182, 212, 0.08);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.82rem;
+    margin-bottom: 0.75rem;
+}
+
+.map-instructions svg {
+    color: #06b6d4;
+    flex-shrink: 0;
+}
+
+/* Map Wrapper */
+.map-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+    /* Force containment */
+    contain: layout style paint;
+    isolation: isolate;
+}
+
+.map-wrapper .leaflet-container {
+    background: rgba(18, 18, 18, 0.9);
+    z-index: 1 !important;
+}
+
+/* Ensure all Leaflet elements stay within stacking context and below header (z-index: 1000) */
+.map-wrapper .leaflet-pane,
+.map-wrapper .leaflet-control-container,
+.map-wrapper .leaflet-top,
+.map-wrapper .leaflet-bottom,
+.map-wrapper .leaflet-control,
+.map-wrapper .leaflet-popup-pane,
+.map-wrapper .leaflet-tooltip-pane,
+.map-wrapper .leaflet-shadow-pane,
+.map-wrapper .leaflet-overlay-pane,
+.map-wrapper .leaflet-marker-pane {
+    z-index: auto !important;
+}
+
+/* Override any high z-index values from Leaflet */
+.map-wrapper * {
+    max-width: 100%;
+}
+
+/* Force all Leaflet tile layers to stay within bounds */
+.leaflet-tile-pane,
+.leaflet-tile-container,
+.leaflet-tile {
+    z-index: auto !important;
+}
+
+/* Selected Address Display */
+.selected-address {
+    padding: 0.85rem;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 6px;
+}
+
+.selected-address strong {
+    display: block;
+    color: #22c55e;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.selected-address p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .map-picker-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .map-toggle-btn {
+        justify-content: center;
+    }
+
+    .map-search-form {
+        flex-direction: column;
+    }
+
+    .map-wrapper .leaflet-container {
+        height: 300px !important;
+    }
+}
+

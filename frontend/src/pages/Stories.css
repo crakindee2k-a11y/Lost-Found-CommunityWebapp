@@ -1,0 +1,260 @@
+/* ===================================
+   STORIES PAGE - GLASSMORPHISM DESIGN
+   Matching Home Page Aesthetic
+   =================================== */
+
+.stories-page {
+    min-height: 100vh;
+    background: #0d0d0d;
+    padding: 3rem 2rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Ambient background gradient */
+.stories-page::before {
+    content: '';
+    position: fixed;
+    top: -10%;
+    left: -5%;
+    right: -5%;
+    bottom: -10%;
+    background: 
+        radial-gradient(circle at 15% 25%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(34, 197, 94, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(60px);
+}
+
+.stories-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stories-header h1 {
+    font-size: clamp(2.5rem, 5vw, 3rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #ffffff 0%, #22c55e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stories-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.stories-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.story-card-full {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(18, 18, 18, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.6s ease-out backwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.story-card-full::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.story-card-full:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.story-card-full:hover::before {
+    opacity: 1;
+}
+
+.story-card-full:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.story-card-full:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.story-card-full:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.story-card-full:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.story-card-full:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.story-card-full:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.story-icon-large {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 12px rgba(34, 197, 94, 0.4));
+    position: relative;
+    z-index: 1;
+}
+
+.story-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
+}
+
+.story-content {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.story-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    z-index: 1;
+}
+
+.story-author {
+    font-size: 0.9rem;
+    color: #22c55e;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.story-author::before {
+    content: '👤';
+    filter: grayscale(100%);
+    opacity: 0.7;
+}
+
+.story-date {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+}
+
+/* Success Banner on Stories */
+.success-banner {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(16, 185, 129, 0.1) 100%);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+}
+
+.success-banner h3 {
+    color: #22c55e;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.success-banner p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .stories-page {
+        padding: 2rem 1rem;
+    }
+
+    .stories-header {
+        margin-bottom: 2rem;
+    }
+
+    .stories-header h1 {
+        font-size: 2rem;
+    }
+
+    .stories-subtitle {
+        font-size: 1rem;
+    }
+
+    .stories-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .story-card-full {
+        padding: 1.5rem;
+    }
+
+    .success-banner {
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 2rem;
+    }
+}
