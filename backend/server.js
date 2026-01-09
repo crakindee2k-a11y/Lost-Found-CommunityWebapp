@@ -9,12 +9,15 @@ const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const { connectDB, disconnectDB } = require('./config/database');
+const { seedDemoDataIfEnabled } = require('./scripts/seed');
 
 // Connect to database
-connectDB().catch((error) => {
-    console.error('❌ Failed to initialize database connection:', error.message);
-    process.exit(1);
-});
+connectDB()
+    .then(() => seedDemoDataIfEnabled())
+    .catch((error) => {
+        console.error('❌ Failed to initialize database connection:', error.message);
+        process.exit(1);
+    });
 
 const app = express();
 
@@ -25,7 +28,7 @@ app.use(helmet({
         directives: {
             defaultSrc: ["'self'"],
             connectSrc: ["'self'", "https://nominatim.openstreetmap.org"],
-            imgSrc: ["'self'", "data:", "https://*.tile.openstreetmap.org", "https://cdnjs.cloudflare.com", "https://*.openstreetmap.org"],
+            imgSrc: ["'self'", "data:", "https://*.tile.openstreetmap.org", "https://cdnjs.cloudflare.com", "https://*.openstreetmap.org", "https://images.unsplash.com"],
             scriptSrc: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com"],
             styleSrc: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com"],
             fontSrc: ["'self'", "https://fonts.gstatic.com"],

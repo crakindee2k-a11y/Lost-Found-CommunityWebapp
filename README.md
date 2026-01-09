@@ -71,3 +71,17 @@ Railway (recommended):
 2. Add Railway MongoDB plugin
 3. Set `NODE_ENV=production` and `JWT_SECRET`
 4. Deploy
+
+Optional demo data (admin, demo user, demo posts):
+
+- Set `SEED_DEMO=true`
+- Optional overrides:
+  - `SEED_ADMIN_EMAIL` (default `admin@gmail.com`)
+  - `SEED_ADMIN_PASSWORD` (default `password123`)
+  - `SEED_USER_EMAIL` (default `demo@gmail.com`)
+  - `SEED_USER_PASSWORD` (default `password123`)
+  - `SEED_RESET_PASSWORDS=true` (reset passwords on existing seeded users)
+
+## License
+
+MIT
