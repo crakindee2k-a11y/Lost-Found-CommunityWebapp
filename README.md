@@ -71,7 +71,3 @@ Railway (recommended):
 2. Add Railway MongoDB plugin
 3. Set `NODE_ENV=production` and `JWT_SECRET`
 4. Deploy
-
-## License
-
-MIT
