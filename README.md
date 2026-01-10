@@ -2,6 +2,14 @@
 
 FindX is a full-stack lost & found community web app where users can post lost/found items, communicate securely, and recover items faster.
 
+## Live Demo
+
+- Deployed link: https://deens-lost-found-communitywebapp-production.up.railway.app/
+
+### Demo Accounts
+- Admin: `admin@findx.com` / `password123` ~/admin/login
+- User: `user1@findx.com` / `password123`
+
 ## Features
 
 - User authentication (JWT)
@@ -60,12 +68,3 @@ Frontend (`frontend/.env`):
 REACT_APP_API_URL=http://localhost:5000/api
 REACT_APP_APP_NAME=FindX
 ```
-
-## Live Demo
-
-- Deployed link: https://deens-lost-found-communitywebapp-production.up.railway.app/
-
-### Demo Accounts
-- Admin: `admin@findx.com` / `password123`
-- User: `user1@findx.com` / `password123`
-
