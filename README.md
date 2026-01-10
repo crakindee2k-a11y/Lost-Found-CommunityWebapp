@@ -82,6 +82,16 @@ Optional demo data (admin, demo user, demo posts):
   - `SEED_USER_PASSWORD` (default `password123`)
   - `SEED_RESET_PASSWORDS=true` (reset passwords on existing seeded users)
 
+## Live Demo
+
+- Deployed link: https://deens-lost-found-communitywebapp-production.up.railway.app/
+
+### Demo Accounts
+- Admin: `admin@gmail.com` / `password123`
+- User: `user1@gmail.com` / `password123`
+
+> These are public demo credentials. Rotate or disable them for production use.
+
 ## License
 
 MIT
