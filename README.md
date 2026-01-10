@@ -66,6 +66,6 @@ REACT_APP_APP_NAME=FindX
 - Deployed link: https://deens-lost-found-communitywebapp-production.up.railway.app/
 
 ### Demo Accounts
-- Admin: `admin@gmail.com` / `password123`
-- User: `user1@gmail.com` / `password123`
+- Admin: `admin@findx.com` / `password123`
+- User: `user1@findx.com` / `password123`
 
