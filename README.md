@@ -69,8 +69,3 @@ REACT_APP_APP_NAME=FindX
 - Admin: `admin@gmail.com` / `password123`
 - User: `user1@gmail.com` / `password123`
 
-> These are public demo credentials. Rotate or disable them for production use.
-
-## License
-
-MIT
